@@ -1,0 +1,56 @@
+<html>
+<%- include("../common/head.ejs",{
+        title:'index',
+        path:".",
+        scriptKey:"index"
+    })%>
+
+<body>
+
+  <div class="original">
+    <p>update</p>
+
+    <div class="looparea">
+      <div class="loop">
+        <div class="loop_inner">
+          <ul class="loop_list">
+            <% for (let index = 1; index <= 32; index++) {
+              let i = index % 8 + 1;
+              %>
+            <li class="loop_item">
+              <%- include('../../../dist/assets/resource/txt_join0'+i+'.svg')%>
+            </li>
+            <%}%>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="css-loop">
+    <p>css loop</p>
+    <div class="looparea">
+      <div class="loop">
+        <div class="loop_inner animation">
+          <ul class="loop_list">
+            
+            <% for (let index = 1; index <= 32; index++) {
+              let i = index % 8 + 1;
+              %>
+            <li class="loop_item">
+              <%- include('../../../dist/assets/resource/txt_join0'+i+'.svg')%>
+            </li>
+            <%}%>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="canvas-loop">
+    <p>canvap loop</p>
+    <canvas></canvas>
+  </div>
+
+</body>
+
+</html>

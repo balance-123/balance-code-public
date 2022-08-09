@@ -1,0 +1,92 @@
+@use "./utils/reset";
+
+html,
+body {
+  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+  font-size: 1px;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  canvas {
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+  }
+}
+.original {
+  margin-top: 100px;
+  .loop_inner {
+    will-change: transform;
+  }
+}
+
+.looparea {
+  display: flex;
+  align-items: center;
+  height: 75px;
+  background-color: rgb(186, 186, 186);
+}
+
+.loop {
+  // margin-left: -72rem;
+}
+
+.loop_list {
+  display: flex;
+  overflow: hidden;
+}
+
+.loop_item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 17rem;
+  svg {
+    height: 28rem;
+    width: auto;
+  }
+}
+
+.css-loop {
+  margin-top: 50px;
+  .loop {
+    margin-left: 0;
+  }
+
+  .animation {
+    animation: animation var(--duration) linear 0s infinite;
+  }
+}
+
+@keyframes animation {
+  0% {
+    transform: translate3d(0px, 0px, 1px);
+  }
+  100% {
+    transform: translate3d(var(--width, -100vw), 0px, 0px);
+  }
+}
+
+.canvas-loop {
+  margin-top: 50px;
+
+  canvas {
+    width: 100%;
+    height: 75px;
+  }
+}
+
+.performance {
+  position: fixed;
+  bottom: 15px;
+  right: 25px;
+}
