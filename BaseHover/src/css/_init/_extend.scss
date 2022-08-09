@@ -1,0 +1,27 @@
+/* --------------------------------------------------------------------------------
+*
+*   common
+*
+-------------------------------------------------------------------------------- */
+	
+%cf {
+    zoom:1;
+    &:after{
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+// how to
+// .selector {
+//   @extend %cf;
+// }
+
+%usnone {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}

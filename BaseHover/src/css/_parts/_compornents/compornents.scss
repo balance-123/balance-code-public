@@ -1,0 +1,72 @@
+/* --------------------------------------------------------------------------------
+*
+*   section
+*
+-------------------------------------------------------------------------------- */
+
+
+/* --------------------------------------------------------------------------------
+*
+*   bar
+*
+-------------------------------------------------------------------------------- */
+.left_bar {
+
+}
+.left_bar:after {
+  display: block;
+  width: 7px;
+  height: 35px;
+  content: '';
+  background-color: #000;
+  position: absolute;
+  left: 0;
+  top: -6px;
+}
+
+.up_bar {
+
+}
+.up_bar:before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  transition: height .18s $easeOutCubic, background-color .2s $easeOutQuad;
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   select
+*
+-------------------------------------------------------------------------------- */
+body.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   grab
+*
+-------------------------------------------------------------------------------- */
+.grab {
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+.grabbing {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: -ms-grabbing;
+  cursor: grabbing;
+}

@@ -1,0 +1,98 @@
+/* --------------------------------------------------------------------------------
+*
+*   html,body
+*
+-------------------------------------------------------------------------------- */
+html,body {
+
+}
+
+html {
+
+  // baseフォント
+  color: $font-color;
+  font-size: $fz + px;
+  font-family: $font;
+  font-weight: $fw;
+
+  letter-spacing: $ls;
+
+  // 背景
+  background-color: $bg-color;
+  // background: url(../resource/svg/common/bg.svg) no-repeat;
+  // background-size: cover;
+  // background-position: center center;
+
+  // sp対策
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  @if $visible == true { opacity: 1; }
+  @else { opacity: 0; }
+
+  @if $sp_select == true { -webkit-tap-highlight-color:rgba(0,0,0,0); }
+
+  @if $hidden == true { overflow: hidden; }
+
+  // other
+  // backface-visibility: hidden; //CSS 3D Transformsによる3次元の裏側を描画するかしないか　visible or hidden
+  -webkit-font-smoothing: antialiased; //太く、細く
+  // text-rendering: auto; // web fontカーニング指定
+  // -webkit-font-smoothing: antialiased;
+
+}
+
+body {
+
+
+  /*
+  *
+  *   media query
+  *
+  */
+  @include max(768) {
+
+  }
+
+}
+
+#app {
+  opacity: 1;
+}
+
+.wrapper {
+  // overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   #wrapper #inner
+*
+-------------------------------------------------------------------------------- */
+#wrapper,#inner {
+
+
+}
+
+#wrapper {
+
+  position: relative;
+  z-index: z(wrapper);
+  // overflow: hidden;
+
+
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   .wrapper .inner
+*
+-------------------------------------------------------------------------------- */
+.wrapper {
+
+
+}
+
+.inner {
+
+}

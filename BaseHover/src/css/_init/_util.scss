@@ -1,0 +1,245 @@
+/* --------------------------------------------------------------------------------
+*
+*   float
+*
+-------------------------------------------------------------------------------- */
+  .fl { float: left; }        .fr { float: right; }       .cl { clear:both; }
+
+  .fList > li,
+  .fList > dt,
+  .fList > dd,
+  .fList > .item {float: left;}
+  .fList > .item:last-child {padding-right: 0 !important;margin-right: 0 !important;}
+
+  .flex > li:last-child,
+  .flex > dt:last-child,
+  .flex > dd:last-child,
+  .flex > .item:last-child {padding-right: 0 !important;margin-right: 0 !important;}
+
+  .fBoth > li:first-child {float: left;} 
+  .fBoth > li:last-child{float: right;}
+  .fBoth > dt,
+  .fBoth > .item:nth-child(1) {float: left;}
+  .fBoth > dd,
+  .fBoth > .item:nth-child(2) {float: right;} 
+
+/* --------------------------------------------------------------------------------
+*
+*   flex
+*
+-------------------------------------------------------------------------------- */
+  .flex {
+    display: flex;
+  }
+
+/* --------------------------------------------------------------------------------
+*
+*   Clearfix
+*
+-------------------------------------------------------------------------------- */
+  .cf, .fList { zoom:1; }
+  .cf:after, .fList:after, .fBoth:after { content:"."; display: block; height:0px; clear:both; line-height:0; visibility:hidden; }
+
+/* --------------------------------------------------------------------------------
+*
+*   TextAlign
+*
+-------------------------------------------------------------------------------- */
+
+  .al { text-align: left; }   .ar { text-align: right; }  .ac { text-align: center; }
+  .vb { vertical-align: baseline; }
+
+/* --------------------------------------------------------------------------------
+*
+*   Nav
+*
+-------------------------------------------------------------------------------- */
+  .nav { zoom:1; }
+  .nav:after { content:"."; display: block; height:0px; clear:both; line-height:0; visibility:hidden; }
+  
+
+/* --------------------------------------------------------------------------------
+*
+*   font
+*
+-------------------------------------------------------------------------------- */
+        
+.captalize {text-transform: capitalize;}
+.uppercase {text-transform: uppercase;}
+.lowercase {text-transform: lowercase;}
+
+/* --------------------------------------------------------------------------------
+*
+*   responsive
+*
+-------------------------------------------------------------------------------- */    
+
+  img.fitted {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+/* --------------------------------------------------------------------------------
+*
+*   overflow hidden
+*
+-------------------------------------------------------------------------------- */
+.oh {overflow: hidden;}
+
+/* --------------------------------------------------------------------------------
+*
+*   word breadk
+*
+-------------------------------------------------------------------------------- */
+.wb {word-break: break-all;}
+
+/* --------------------------------------------------------------------------------
+*
+*   font-weight
+*
+-------------------------------------------------------------------------------- */
+.fwb {font-weight: bold;}
+
+/* --------------------------------------------------------------------------------
+*
+*   center
+*
+-------------------------------------------------------------------------------- */
+.posCenter {
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%,-50%);
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   row
+*
+-------------------------------------------------------------------------------- */
+      
+.row {
+    
+    font-size: 0;
+    text-align: center;
+
+    .item {
+        display: inline-block;
+    }
+
+    &.row_col2 > .item {
+        width: 50%;
+    }
+    &.row_col3 > .item {
+        width: 33.3333%;
+    }
+    &.row_col4 > .item {
+        width: 25%;
+    }
+
+    .item:last-child {
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+    }
+
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   opacity
+*
+-------------------------------------------------------------------------------- */
+
+.is-unvisible {
+  opacity: 0 !important;
+}
+.is-visible {
+  opacity: 1 !important;
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   display
+*
+-------------------------------------------------------------------------------- */
+
+.is-block {
+  display: block !important;
+}
+.is-none {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   overflow
+*
+-------------------------------------------------------------------------------- */
+
+.is-scroll {
+  overflow: scroll !important;
+}
+.is-scroll-x {
+  overflow-x: scroll !important;
+}
+.is-scroll-y {
+  overflow-y: scroll !important;
+}
+.is-hidden {
+  overflow: hidden !important;
+}
+.is-hidden-x {
+  overflow-x: hidden !important;
+}
+.is-hidden-y {
+  overflow-y: hidden !important;
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   position
+*
+-------------------------------------------------------------------------------- */
+
+.is-fixed {
+  position: fixed !important;
+}
+.is-absolute {
+  position: absolute !important;
+}
+.is-relative {
+  position: relative !important;
+}
+.is-static {
+  position: static !important;
+}
+
+
+/* --------------------------------------------------------------------------------
+*
+*   // 画像保存禁止    
+*
+-------------------------------------------------------------------------------- */
+// img {
+//   touch-callout:none;
+//   user-select:none;
+//   -webkit-touch-callout:none;
+//   -webkit-user-select:none;
+//   -moz-touch-callout:none;
+//   -moz-user-select:none;
+// }
+
+/* --------------------------------------------------------------------------------
+*
+*   design(見本)
+*
+-------------------------------------------------------------------------------- */
+.sample {
+  display: none;
+  position: absolute;
+  opacity: 0.3;
+  top: 0px;
+  left: 0;
+  z-index: 99999;
+
+}

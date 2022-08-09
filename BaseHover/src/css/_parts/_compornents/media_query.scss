@@ -1,0 +1,57 @@
+/* --------------------------------------------------------------------------------
+*
+*   media query module
+*
+-------------------------------------------------------------------------------- */
+
+// 600以下
+@media only screen and (max-width: $bp01) {
+
+  br.sp {display: inline-block;}
+  br.pc {display: none;}
+
+  .display.sp {display: inline-block;}
+  .display.pc {display: none;}
+
+  /*
+  *
+  *   display flex
+  *
+  */
+   .sp-order-1 {order : 1;}
+   .sp-order-2 {order : 2;}
+   .sp-order-3 {order : 3;}
+   .sp-order-4 {order : 4;}
+   .sp-order-5 {order : 5;}
+   .sp-order-6 {order : 6;}
+   .sp-order-7 {order : 7;}
+   .sp-order-8 {order : 8;}
+   .sp-order-9 {order : 9;}
+
+}
+
+// 600以上
+@media only screen and (min-width: $bp01 + 1) {
+  
+  br.pc {display: inline-block;}
+  br.sp {display: none;}
+
+  .display.pc {display: inline-block;}
+  .display.sp {display: none;}
+
+  /*
+  *
+  *   display flex
+  *
+  */
+   .pc-order-1 {order : 1;}
+   .pc-order-2 {order : 2;}
+   .pc-order-3 {order : 3;}
+   .pc-order-4 {order : 4;}
+   .pc-order-5 {order : 5;}
+   .pc-order-6 {order : 6;}
+   .pc-order-7 {order : 7;}
+   .pc-order-8 {order : 8;}
+   .pc-order-9 {order : 9;}
+ 
+}

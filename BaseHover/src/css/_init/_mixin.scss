@@ -1,0 +1,319 @@
+/* --------------------------------------------------------------------------------
+*
+*   mixin
+*
+-------------------------------------------------------------------------------- */
+
+@mixin fz($size: 10, $base: 10) {
+  font-size: $size + px;
+  font-size: ($size / $base) * 1rem;
+}
+
+@mixin rem($size: 10, $base: 10) {
+  font-size: ($size / $base) * 1rem;
+}
+
+@mixin lh($lh: 16,$size: $fontSize) {
+    line-height:$lh + px;
+    line-height:$lh / $size + rem;
+}
+
+@mixin placeholder {
+    &:placeholder-shown {
+        @content;
+    }
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        opacity: 1;
+        @content;
+    }
+    &::-moz-placeholder {
+        opacity: 1;
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+
+/* --------------------------------------------------------------------------------
+*
+*   animation
+*
+-------------------------------------------------------------------------------- */
+    
+// animation
+@mixin keyframes($name) {
+  @-webkit-keyframes $name {
+    @content;
+  }
+  @-moz-keyframes $name {
+    @content;
+  } 
+  @keyframes $name {
+    @content;
+  }
+}
+
+	// #hoge{
+	//     @include animation(animationSample 1.2s ease 0.15s);   
+	// }
+	// @include keyframes(name){
+	//     0% {
+	//         opacity:0;
+	//     }
+	//     100% {
+	//         opacity:1;
+	//     }
+	// }
+	
+	// 補完(インターポレーション)：#{}
+	// Sassは補完を行うための構文として #{} を用意している。
+	// 変数に入った文字列は通常は値として認識されてエラーが出てしまうため、そのままだとプロパティの値にしか使用できないが、 シャープ記号を前に置いた波括弧 #{}と組み合わせることでセレクタやプロパティ名にも使うことができるようになる。
+
+/* --------------------------------------------------------------------------------
+*
+*   media query
+*
+-------------------------------------------------------------------------------- */
+
+// pc-w | pc | tablet | mobile | mobile-s
+
+@mixin media-max($media-width) {
+  
+  // - | - | - | - | ○
+	@if $media-width == 'sp-s' {
+		@media only screen and (max-width: $bp00 - 1) {
+			@content;
+		}
+	}
+
+  // - | - | - | ○ | ○
+  @else if $media-width == 'sp' {
+      @media only screen and (max-width: $bp01) {
+          @content;
+      }
+  }
+  
+  // - | - | - | ○ | ○
+  @else if $media-width == 'tab' {
+      @media only screen and (max-width: $bp02) {
+          @content;
+      }
+  }
+
+  // - | ○ | ○ | ○ | ○
+  @else if $media-width == 'pc' {
+      @media only screen and (max-width: $bp03) {
+          @content;
+      }
+  }
+  
+  // ○ | - | - | - | -
+	@else if $media-width == 'pc-w' {
+		@media only screen and (min-width: $bp03 + 1) {
+			@content;
+		}
+	}
+
+  @else {
+    @media only screen and (max-width: $media-width) {
+      @content;
+    }
+  }
+
+}
+
+@mixin media-min($media-width) {
+	
+  // - | - | - | - | ○
+  @if $media-width == 'sp-s' {
+    @media only screen and (max-width: $bp00 - 1) {
+      @content;
+    }
+  }
+
+  // ○ | ○ | ○ | ○ | -
+  @else if $media-width == 'sp' {
+      @media only screen and (min-width: $bp00 + 1) {
+          @content;
+      }
+  }
+  
+  // ○ | ○ | ○ | - | -
+  @else if $media-width == 'tab' {
+      @media only screen and (min-width: $bp01 + 1) {
+          @content;
+      }
+  }
+
+  // ○ | ○ | - | - | -
+  @else if $media-width == 'pc' {
+      @media only screen and (min-width: $bp02 + 1) {
+          @content;
+      }
+  }
+  
+  // ○ | - | - | - | -
+  @else if $media-width == 'pc-w' {
+    @media only screen and (min-width: $bp03 + 1) {
+      @content;
+    }
+  }
+
+  @else {
+    @media only screen and (min-width: $media-width) {
+      @content;
+    }
+  }
+
+}
+
+
+/*
+*
+*   max order 
+*
+*/
+// @include media-max('pc-w') {
+  
+//   width: 20px;
+
+// }
+// @include media-max('pc') {
+  
+//   width: 40px;
+
+// }
+// @include media-max('tab') {
+  
+//   width: 60px;
+
+// }
+// @include max(768) {
+  
+//   width: 90px;
+
+// }
+// @include media-max('sp-s') {
+  
+//   width: 200px;
+
+// }
+
+/*
+*
+*   min order 
+*
+*/
+// @include media-min('sp-s') {
+  
+//   width: 20px;
+
+// }
+// @include media-min('sp') {
+  
+//   width: 40px;
+
+// }
+// @include media-min('tab') {
+  
+//   width: 60px;
+
+// }
+// @include media-min('pc') {
+  
+//   width: 90px;
+
+// }
+// @include media-min('pc-w') {
+  
+//   width: 200px;
+
+// }
+
+
+/*
+*
+*   how to   
+*
+*/
+  // #main {
+  // 	float: left;
+  // 	width: 610px;
+  // 	padding: 15px;
+  // 	background: #f1f1f1;
+  // 		@include media(TAB) {
+  // 			float: none;
+  // 			margin: 0 auto;
+  // 		}
+  // 		@include media(SP) {
+  // 			width: auto;
+  // 			margin: 0 10px;
+  // 		}
+  // }
+  
+// MediaQueries
+@mixin max($bp: 767) {
+  @media (max-width: $bp+'px') {
+    @content;
+  }
+}
+@mixin min($bp: 966) {
+  @media (min-width: $bp+'px') {
+    @content;
+  }
+}
+@mixin minmax($min: 768, $max: 965) {
+  @media (min-width: $min+'px') and (max-width: $max+'px') {
+    @content;
+  }
+}
+
+
+/* --------------------------------------------------------------------------------
+*
+*   portrait,landscape
+*
+-------------------------------------------------------------------------------- */
+
+@mixin land {
+	@media all and (orientation:landscape) {
+		@content;
+	}
+}
+
+@mixin port {
+	@media all and (orientation:portrait) {
+		@content;
+	}
+}
+
+  /*
+  *
+  *   how to
+  *
+  */
+  // .item {
+  // 	width: 50%;
+  // 	@include port {
+  // 		width: 100%;
+  // 	}
+  // 	@include land {
+  // 		width: 25%;
+  // 	}
+  // 	.image {
+  // 		@include port {
+  // 			width: 150px;
+  // 		}
+  // 		@include land {
+  // 			float: left;
+  // 		}
+  // 	}
+  // }
+  
+  // cf
+  // http://webskillup.com/ety/20141213193916/

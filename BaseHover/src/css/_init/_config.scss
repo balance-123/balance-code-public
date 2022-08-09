@@ -1,0 +1,205 @@
+@charset "utf-8";
+
+//------------------------------------
+// PATH
+//------------------------------------
+$img_path:  "../resource/" !default;
+
+//------------------------------------
+// setting
+//------------------------------------
+$visible: true; // ページ表示・非表示
+$sp_select: true; // スマホの選択範囲を消す
+$hidden: false; // スクロール表示・非表示
+
+//------------------------------------
+// color
+//------------------------------------
+$font-color: #000; // テキスト
+$bg-color: #fff; // 背景
+// $bg-color: #000;
+
+// リンク
+$link-color: $font-color;
+$link-colorHover: $font-color;
+$link-colorVisited: $font-color;
+$link-colorActive: $font-color;
+
+$black       : #000 !default;
+$grayDarker  : #222 !default;
+$grayDark    : #333 !default;
+$gray        : #555 !default;
+$grayLight   : #999 !default;
+$grayLighter : #eee !default;
+$white       : #fff !default;
+
+/* --------------------------------------------------------------------------------
+*   text / font
+-------------------------------------------------------------------------------- */
+
+$deffz: 14; // font-size
+$spdeffz: 12; // font-size
+$fz: 10; // font-size
+$ls: 0.025em; // line-height
+
+$fonttype: 'gothic';  // 'mincho' or  'webfont'
+$font: '';
+$fw: 400;
+
+// device font
+
+  // ゴシック
+  @if $fonttype == 'gothic' {
+    $font: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', Meiryo, 'メイリオ', Arial, sans-serif;
+    // $font: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+    // $font: 'Poppins', YuGothic, '游ゴシック', sans-serif;
+    // $font: YuGothic, '游ゴシック', 'Hiragino Kaku Gothic ProN', 'YuGothicM', 'ヒラギノ角ゴ ProN W3', Meiryo, 'メイリオ', sans-serif;
+    // $font: 'YuGothicM', 'YuGothicB', 'ヒラギノ角ゴ ProN W3', Meiryo, 'メイリオ', sans-serif;
+    // $font: sans-serif;
+    // $base_font: "Source Code Pro", "メイリオ", "Meiryo", "ヒラギノ明朝 Pro W6", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", serif, verdana, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
+    // $font: "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, sans-serif;
+  }
+
+  // 明朝
+  @if $fonttype == 'mincho' {
+    $font: 'ヒラギノ明朝 Pro W6', 'Hiragino Mincho Pro', 'HGS明朝E', 'ＭＳ Ｐ明朝', Meiryo, 'メイリオ', serif;
+    // $font: '游明朝','YuMincho', 'ヒラギノ明朝 Pro W6', 'Hiragino Mincho Pro', 'HGS明朝E', 'ＭＳ Ｐ明朝', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, 'メイリオ', sans-serif;
+  }
+
+  $font_m: '游明朝','YuMincho', 'ヒラギノ明朝 Pro W6', 'Hiragino Mincho Pro', 'HGS明朝E', 'ＭＳ Ｐ明朝', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, 'メイリオ', sans-serif;
+
+  // web font
+  %Ubuntu_light {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+  }
+  %Ubuntu_reg {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+  }
+  %Ubuntu_mid {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+  }
+  %Ubuntu_semibold {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+  }
+  %Ubuntu_bold {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+  }
+  // %Poppins_exbold {
+  //   font-family: 'Poppins', sans-serif;
+  //   font-style: normal;
+  //   font-weight: 800;
+  // }
+
+
+
+/* --------------------------------------------------------------------------------
+*   media query
+-------------------------------------------------------------------------------- */
+// ブレイクポイントを変数指定
+// pc-l | pc-s | tablet | mobile | mobile-s
+
+$bp00: 375px;
+$bp01: 768px;
+$bp02: 960px;
+$bp03: 1280px;
+
+$vwbase: 1440px;
+
+/* --------------------------------------------------------------------------------
+*
+*   z-index
+*
+-------------------------------------------------------------------------------- */
+$z-map: (
+  bg,
+  wrapper,
+  about,
+  header,
+  modal,
+  footer,
+  loading
+);
+
+$z-map-child: (
+  index
+  input
+  loading
+  movie
+  details
+);
+
+// z-index
+@function z($name) {
+  @return index($z-map, $name);
+}
+// z-index-child
+@function zChild($name) {
+  @return index($z-map-child, $name);
+}
+
+/* --------------------------------------------------------------------------------
+*
+*   easing
+*
+-------------------------------------------------------------------------------- */
+$ease              : cubic-bezier(.25, .1, .25, 1);
+$easeIn           : cubic-bezier(.42, .0, 1, 1);
+$easeOut          : cubic-bezier(.0, .0, .58, 1);
+$easeInOut       : cubic-bezier(.42, .0, 0.58, 1);
+$easeInSine      : cubic-bezier(.47, 0, .745, .715);
+$easeOutSine     : cubic-bezier(.39, .575, .565, 1);
+$easeInOutSine  : cubic-bezier(.445, .05, .55, .95);
+$easeInQuad      : cubic-bezier(.55, .085, .68, .53);
+$easeOutQuad     : cubic-bezier(.25, .46, .45, .94);
+$easeInOutQuad  : cubic-bezier(.455, .03, .515, .955);
+$easeInCubic     : cubic-bezier(.55, .055, .675, .19);
+$easeOutCubic    : cubic-bezier(.215, .61, .355, 1);
+$easeInOutCubic : cubic-bezier(.645, .045, .355, 1);
+$easeInQuart     : cubic-bezier(.895, .03, .685, .22);
+$easeOutQuart    : cubic-bezier(.165, .84, .44, 1);
+$easeInOutQuart : cubic-bezier(.77, 0, .175, 1);
+$easeInQuint     : cubic-bezier(.755, .05, .855, .06);
+$easeOutQuint    : cubic-bezier(.23, 1, .32, 1);
+$easeInOutQuint : cubic-bezier(.86, 0, .07, 1);
+$easeInExpo      : cubic-bezier(.95, .05, .795, .035);
+$easeOutExpo     : cubic-bezier(.19, 1, .22, 1);
+$easeInOutExpo  : cubic-bezier(1, 0, 0, 1);
+$easeInCirc      : cubic-bezier(.6, .04, .98, .335);
+$easeOutCirc     : cubic-bezier(.075, .82, .165, 1);
+$easeInOutCirc  : cubic-bezier(.785, .135, .15, .86);
+$easeInBack      : cubic-bezier(.6, -.28, .735, .045);
+$easeOutBack     : cubic-bezier(.175, .885, .32, 1.275);
+$easeInOutBack  : cubic-bezier(.68, -.55, .265, 1.55);
+
+/* --------------------------------------------------------------------------------
+*
+*   link
+*
+-------------------------------------------------------------------------------- */
+
+a {
+  color: $link-color;
+  text-decoration: none;
+}
+a:hover {
+  color: $link-colorHover;
+  text-decoration: none;
+}
+a:visited {
+  color: $link-colorVisited;
+  text-decoration: none;
+}
+a:active {
+  color: $link-colorActive;
+  text-decoration: none;
+}

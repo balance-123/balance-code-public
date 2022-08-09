@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/* --------------------------------------------------------------------------------
+*   common
+-------------------------------------------------------------------------------- */
+@import "./_init/import";
+@import "./_init/reset"; // リセットCSS、フォントサイズ sss
+
+/* --------------------------------------------------------------------------------
+*   parts
+-------------------------------------------------------------------------------- */
+@import "./_parts/_common/header.scss";
+@import "./_parts/_common/footer.scss";
+@import "./_parts/_common/wrapper.scss";
+
+@import "./_parts/_compornents/compornents.scss";
+@import "./_parts/_compornents/media_query.scss";
