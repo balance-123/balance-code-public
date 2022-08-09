@@ -18,8 +18,6 @@ const config = {
   },
 };
 
-const performanceDom = document.getElementById("js-perfomance");
-
 const gui = new GUI();
 
 gui.add(config, "originalUpdate").onChange((value) => {
@@ -41,6 +39,4 @@ const canvas = new Canvas();
 updater.on((diff) => {
   if (config.originalUpdate) original.update(diff);
   if (config.canvasUpdate) canvas.update(diff);
-
-  // performanceDom.textContent = `${diff}`;
 });

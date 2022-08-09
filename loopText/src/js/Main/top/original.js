@@ -17,7 +17,7 @@ export default class Original {
   update(diff) {
     const frameRate = Math.min(diff / ((1 / 60) * 1000), 1);
     this.currentPosX += this.speed.value * frameRate;
-    // this.v += (this.currentPosX - this.v) * 0.05;
+
     this.v = this.currentPosX;
     this.inner.style.transform = `translate3d(${-this.v}px, 0px, 1px)`;
     if (this.v > this.resetPoint) {
@@ -27,8 +27,6 @@ export default class Original {
   }
 
   onEnter() {
-    // this.speed.value = 3;
-
     if (this.tl) this.tl.kill();
 
     this.tl = gsap.timeline();
@@ -40,8 +38,6 @@ export default class Original {
   }
 
   onLeave() {
-    // this.speed.value = 0.5;
-
     if (this.tl) this.tl.kill();
 
     this.tl = gsap.timeline();
