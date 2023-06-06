@@ -1,0 +1,22 @@
+{
+  "name": "map_gl",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typed-query-selector": "^2.10.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
+  },
+  "dependencies": {
+    "@types/three": "^0.152.1",
+    "sass": "^1.62.1",
+    "three": "^0.152.1",
+    "virtual-scroll": "^2.2.1"
+  }
+}
