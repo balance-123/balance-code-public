@@ -10,7 +10,17 @@ import {
 import { TexLoader } from "../common/texLoader";
 import { GL_CONFIG, SCALE_AMOUNT } from "../config";
 import { Inputs } from "../inputs";
+import { MapSize, mapTiles, mapTilesNumber } from "./mapTilesConfig";
 import { Pin } from "./pin";
+import { Tile } from "./tile";
+
+const secondWait = (second: number) => {
+  const r = new Promise((resolve) => {
+    setTimeout(resolve, second);
+  });
+
+  return r;
+};
 export class Map extends Object3D {
   private mapSize: {
     w: number;
@@ -27,51 +37,68 @@ export class Map extends Object3D {
   private mapScaleMatrix4: Matrix4 = new Matrix4();
   private inputs: Inputs = Inputs.Instance;
   private pins: Pin = new Pin();
+  private tiles: Tile[] = mapTiles.map((info) => new Tile(info));
 
   constructor(private scene: Scene) {
     super();
 
-    this.add(this.mapMesh);
+    // this.add(this.mapMesh);
+    this.add(...this.tiles);
     this.add(this.pins);
     this.scene.add(this);
   }
 
   async createMap(w: number, h: number) {
-    const loader = TexLoader.getInstance();
-
-    const texture = await loader.customLoad(GL_CONFIG.mapImg);
     //containで表示
-    const aspe = Math.min(w / texture.image.width, h / texture.image.height);
+    const aspe = Math.min(w / MapSize, h / MapSize);
     this.mapSize = {
-      w: texture.image.width * aspe,
-      h: texture.image.height * aspe,
+      w: MapSize * aspe,
+      h: MapSize * aspe,
     };
-    const g = new PlaneGeometry(this.mapSize.w, this.mapSize.h);
+    this.loadCustom();
+    // const loader = this.tiles
+    //   .filter((tile) => tile.mapInfo.src)
+    //   .map((tile) => {
+    //     return tile.load(tile.mapInfo.src!);
+    //   });
 
-    this.mapTexture = texture;
-
-    const m = new MeshBasicMaterial({
-      map: this.mapTexture,
+    const size = this.mapSize.w / mapTilesNumber[0];
+    this.tiles.forEach((tile) => {
+      tile.onResize(size, {
+        x: tile.mapInfo.position.x * size + size * 0.5 - size * 2,
+        y: size * 2 + -size * 0.5 - tile.mapInfo.position.y * size,
+      });
     });
-
-    this.mapMesh.geometry = g;
-    this.mapMesh.material = m;
-    this.mapMesh.applyMatrix4(this.mapMatrix);
-
-    this.add(this.mapMesh);
 
     await this.pins.init();
   }
 
+  async loadCustom() {
+    const needload = this.tiles.filter((tile) => tile.mapInfo.src);
+    for (let index = 0; index < needload.length; index++) {
+      const tile = needload[index];
+      await secondWait(index * 100);
+      await tile.load(tile.mapInfo.src!);
+    }
+
+    //   .map((tile) => {
+    //     return tile.load(tile.mapInfo.src!);
+    //   });
+  }
+
   onResize(w: number, h: number) {
-    const texture = this.mapTexture;
-    const aspe = Math.min(w / texture.image.width, h / texture.image.height);
+    const aspe = Math.min(w / MapSize, h / MapSize);
     this.mapSize = {
-      w: texture.image.width * aspe,
-      h: texture.image.height * aspe,
+      w: MapSize * aspe,
+      h: MapSize * aspe,
     };
-    this.mapMesh.geometry.dispose();
-    this.mapMesh.geometry = new PlaneGeometry(this.mapSize.w, this.mapSize.h);
+    const size = this.mapSize.w / mapTilesNumber[0];
+    this.tiles.forEach((tile) =>
+      tile.onResize(size, {
+        x: tile.mapInfo.position.x * size + size * 0.5 - size * 2,
+        y: size * 2 + -size * 0.5 - tile.mapInfo.position.y * size,
+      })
+    );
   }
 
   onUpdate() {

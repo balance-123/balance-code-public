@@ -3,7 +3,7 @@ import { SCALE } from "./inputs/scaleBtn";
 
 export const GL_CONFIG = {
   pixelRatio: window.devicePixelRatio,
-  mapImg: "./map.jpg",
+  mapImg: "./map.png",
   pinURL: "./pin.png",
   pinSize: new Vector2(20, 20),
 } as const;
