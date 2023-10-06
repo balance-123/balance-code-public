@@ -11,8 +11,6 @@ function get_script_src(){
         $url = $data['url'];
         $src = $url.'@vite/client';
         $src2 = $url.$data['inputs']['main'];
-        // wp_enqueue_script('main.dev.client.js',$src, array(), '1.0.0'); 
-        // wp_enqueue_script('main.dev..client.js',$src2, array(), '1.0.0'); 
         echo "
         <script src='{$src}' type='module'></script>
         <script src='{$src2}' type='module'></script>
