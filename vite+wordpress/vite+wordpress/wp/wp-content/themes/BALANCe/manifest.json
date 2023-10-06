@@ -1,0 +1,12 @@
+{
+  "css/style.scss": {
+    "file": "assets/css/style.css",
+    "isEntry": true,
+    "src": "css/style.scss"
+  },
+  "js/main.js": {
+    "file": "assets/js/main.js",
+    "isEntry": true,
+    "src": "js/main.js"
+  }
+}

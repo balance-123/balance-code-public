@@ -1,0 +1,29 @@
+version: "3.1"
+
+services:
+  wordpress:
+    image: wordpress:php8.1-apache
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: buildDB
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+    volumes:
+      - ./wp:/var/www/html
+
+  buildDB:
+    platform: linux/x86_64 # M1チップ対応のため追記
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+    volumes:
+      - buildDB:/var/lib/mysql
+
+volumes:
+  wordpress:
+  buildDB:

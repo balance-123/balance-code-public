@@ -1,0 +1,23 @@
+{
+  "name": "htdocs",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node dockerSetup & vite",
+    "build": "node clean.js && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@barba/core": "^2.9.7",
+    "rimraf": "^5.0.1",
+    "sass": "^1.67.0",
+    "vite": "^4.4.5",
+    "vite-plugin-dev-manifest": "^1.2.0",
+    "vite-plugin-live-reload": "^3.0.2"
+  },
+  "dependencies": {
+    "gsap": "^3.12.2",
+    "vite-plugin-sass-glob-import": "^2.0.0"
+  }
+}

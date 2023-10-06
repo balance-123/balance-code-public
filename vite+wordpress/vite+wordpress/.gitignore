@@ -1,0 +1,42 @@
+/wp/wp-admin/
+/wp/wp-content/index.php
+/wp/wp-content/languages
+/wp/wp-content/plugins/index.php
+/wp/wp-content/themes/index.php
+/wp/wp-content/ai1wm-backups/
+/wp/wp-includes/
+/wp/index.php
+/wp/license.txt
+/wp/readme.html
+/wp/wp-*.php
+/wp/xmlrpc.php
+
+# Configuration
+/wp/wp-config.php
+
+# Example themes
+/wp/wp-content/themes/twenty*/
+
+# Example plugin
+/wp/wp-content/plugins/hello.php
+
+# Uploads
+/wp/wp-content/uploads/
+
+# Log files
+*.log
+
+# htaccess
+/.htaccess
+
+# All plugins
+#
+# Note: If you wish to whitelist plugins,
+# uncomment the next line
+/wp/wp-content/plugins
+
+# All themes
+#
+# Note: If you wish to whitelist themes,
+# uncomment the next line
+#/wp-content/themes
